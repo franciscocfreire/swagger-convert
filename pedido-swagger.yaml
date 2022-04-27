@@ -1,0 +1,444 @@
+info:
+  title: OpenAPI definition
+  version: v0
+paths:
+  /v1/pedido:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _pedidoPost
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      parameters:
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/{pedidoId}/trocaedevolucao:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _trocaEDevolucao
+      parameters:
+        - name: pedidoId
+          in: path
+          required: true
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/ProcedimentoTrocaEDevolucaoRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/{pedidoId}/enviarDadosPedido:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _enviarDadosPedido
+      parameters:
+        - name: pedidoId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      produces:
+        - application/json
+  /v1/pedido/{pedidoId}/enviarDadosCliente:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _enviarDadosCliente
+      parameters:
+        - name: pedidoId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      produces:
+        - application/json
+  /v1/pedido/{pedidoId}/atualizaStatus:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _atualizaPedido
+      parameters:
+        - name: pedidoId
+          in: path
+          required: true
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/AtualizaPedidoRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/statusProcesso:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _statusProcesso
+      parameters:
+        - name: cpfLogado
+          in: header
+          required: false
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/StatusProcessoRequestRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/StatusProcessoResponseRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/isRenovacaoConcluido:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _isRenovacaoConcluido
+      parameters:
+        - name: cpfLogado
+          in: header
+          required: false
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/IsAndamentoRequestRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IsAndamentoResponseRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/isRenovacaoAndamento:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _isRenovacaoAndamento
+      parameters:
+        - name: cpfLogado
+          in: header
+          required: false
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/IsAndamentoRequestRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IsAndamentoResponseRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/isCompraConcluido:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _isCompraConcluido
+      parameters:
+        - name: cpfLogado
+          in: header
+          required: false
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/IsAndamentoRequestRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IsAndamentoResponseRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/isCompraAndamento:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _isCompraAndamento
+      parameters:
+        - name: cpfLogado
+          in: header
+          required: false
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/IsAndamentoRequestRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IsAndamentoResponseRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/isAndamentoCompraRenovacao:
+    post:
+      tags:
+        - pedido-controller
+      operationId: _isAndamentoCompraRenovacao
+      parameters:
+        - name: cpfLogado
+          in: header
+          required: false
+          type: string
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/IsAndamentoRequestRepresentation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IsAndamentoResponseRepresentation'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /v1/pedido/{pedidoId}:
+    get:
+      tags:
+        - pedido-controller
+      operationId: _buscaPedido
+      parameters:
+        - name: pedidoId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      produces:
+        - application/json
+  /v1/pedido/hashProtheus/{hashProtheus}:
+    get:
+      tags:
+        - pedido-controller
+      operationId: _buscaPedidoPorHashProtheus
+      parameters:
+        - name: hashProtheus
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      produces:
+        - application/json
+  /v1/pedido/contrato/{contratoId}:
+    get:
+      tags:
+        - pedido-controller
+      operationId: _buscaPedidoPorContrato
+      parameters:
+        - name: contratoId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PedidoRepresentation'
+      produces:
+        - application/json
+swagger: '2.0'
+host: techfacil.dev.awsporto
+schemes:
+  - http
+basePath: /pedido-api
+definitions:
+  ClienteRepresentation:
+    type: object
+    properties:
+      id:
+        type: string
+  EnderecoRepresentation:
+    type: object
+    properties:
+      id:
+        type: string
+  FormasPagamentoRepresentation:
+    type: object
+    properties:
+      idItem:
+        type: string
+      tipoPagamento:
+        type: integer
+        format: int32
+      codigoCia:
+        type: integer
+        format: int32
+  PedidoRepresentation:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      idContrato:
+        type: string
+      numeroProposta:
+        type: string
+      hashPagamento:
+        type: string
+      hashProtheus:
+        type: string
+      token:
+        type: string
+      formasPagamento:
+        type: array
+        items:
+          $ref: '#/definitions/FormasPagamentoRepresentation'
+      produto:
+        $ref: '#/definitions/ProdutoRepresentation'
+      cliente:
+        $ref: '#/definitions/ClienteRepresentation'
+      enderecoEntrega:
+        $ref: '#/definitions/EnderecoRepresentation'
+      status:
+        type: string
+        enum:
+          - ABERTA
+          - CRIADO
+          - CANCELADO_SEM_ELEGIBILIDADE
+          - ELEGIBILIDADE_OK
+          - CANCELADO_FALHA_PAGAMENTO
+          - PAGAMENTO_APROVADO
+          - CANCELADO_RECUSADO_SERASA
+          - APROVADO_SERASA
+          - DADOSCLIENTE_OK
+          - PEDIDO_EM_LOGISTICA
+          - EM_TRANSITO
+          - DESPACHADO
+          - ENTREGUE
+          - CONCLUIDO
+  ProdutoRepresentation:
+    type: object
+    properties:
+      idItem:
+        type: string
+      nome:
+        type: string
+      descricao:
+        type: string
+      subcategoria:
+        type: string
+      agrupamento:
+        type: integer
+        format: int32
+      promocao:
+        type: boolean
+      preVenda:
+        type: boolean
+  ProcedimentoTrocaEDevolucaoRepresentation:
+    type: object
+    properties:
+      procedimento:
+        type: string
+        enum:
+          - CANCELAMENTO
+          - RENOVACAO
+          - COMPRA
+          - COMPRA_COMPULSORIA
+          - DEVOLUCAO
+  AtualizaPedidoRepresentation:
+    type: object
+    properties:
+      status:
+        type: string
+        enum:
+          - ABERTA
+          - CRIADO
+          - CANCELADO_SEM_ELEGIBILIDADE
+          - ELEGIBILIDADE_OK
+          - CANCELADO_FALHA_PAGAMENTO
+          - PAGAMENTO_APROVADO
+          - CANCELADO_RECUSADO_SERASA
+          - APROVADO_SERASA
+          - DADOSCLIENTE_OK
+          - PEDIDO_EM_LOGISTICA
+          - EM_TRANSITO
+          - DESPACHADO
+          - ENTREGUE
+          - CONCLUIDO
+  StatusProcessoRequestRepresentation:
+    type: object
+    properties:
+      hashContrato:
+        type: string
+  StatusProcessoResponseRepresentation:
+    type: object
+    properties:
+      codigo:
+        type: integer
+        format: int32
+      mensagem:
+        type: string
+  IsAndamentoRequestRepresentation:
+    type: object
+    properties:
+      hashContrato:
+        type: string
+  IsAndamentoResponseRepresentation:
+    type: object
+    properties:
+      isAndamento:
+        type: boolean
+x-components: {}
